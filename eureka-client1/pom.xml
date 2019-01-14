@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.springcloud</groupId>
+        <artifactId>springcloud</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <groupId>com.springcloud</groupId>
+    <artifactId>eureka-client1</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>eureka-client1</name>
+    <description>eurake 服务注册客户端</description>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!--eureka client-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        <!--如果要健康检查，就需要这个依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <!--feign 声明式服务调用-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <!-- fegin  from 表单的方式提交数据-->
+        <dependency>
+            <groupId>io.github.openfeign.form</groupId>
+            <artifactId>feign-form-spring</artifactId>
+            <version>3.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfeign.form</groupId>
+            <artifactId>feign-form</artifactId>
+            <version>3.3.0</version>
+        </dependency>
+        <!--热部署-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+    </dependencies>
+
+</project>
