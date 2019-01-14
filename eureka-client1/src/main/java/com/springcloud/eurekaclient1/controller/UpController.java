@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UpController {
     @Autowired
-    MyHealthChecker myHealthChecker;
+    private MyHealthChecker myHealthChecker;
 
     @RequestMapping("/up")
     public String up(@RequestParam("up") Boolean up) {

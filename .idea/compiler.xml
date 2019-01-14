@@ -6,17 +6,21 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="common" />
         <module name="eurakeserver" />
         <module name="eureka-client1" />
         <module name="eureka-clinet2" />
+        <module name="server-auth" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="common" options="-parameters" />
       <module name="eurakeserver" options="-parameters" />
       <module name="eureka-client1" options="-parameters" />
       <module name="eureka-clinet2" options="-parameters" />
+      <module name="server-auth" options="-parameters" />
       <module name="springcloud" options="" />
     </option>
   </component>

@@ -14,14 +14,14 @@ import org.springframework.stereotype.Component;
 public class MyHealthChecker implements HealthIndicator {
     private boolean up = true;
 
-    private  static final String VERSION = "v1.0.0";
     @Override
     public Health health() {
-        int code = 0;
-        if(code != 0){
-            Health.down().withDetail("code",code).withDetail("version",VERSION).build();
+        if (up) {
+            return new Health.Builder().withDetail("aaa_cnt", 10) //自定义监控内容
+                    .withDetail("bbb_status", "up").up().build();
+        } else {
+            return new Health.Builder().withDetail("error", "client is down").down().build();
         }
-        return Health.up().withDetail("code",code).withDetail("version",VERSION).up().build();
     }
 
     public boolean isUp() {
