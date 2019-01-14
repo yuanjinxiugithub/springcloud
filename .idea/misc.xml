@@ -8,6 +8,7 @@
         <option value="$PROJECT_DIR$/eurakeserver/pom.xml" />
         <option value="$PROJECT_DIR$/eureka-client1/pom.xml" />
         <option value="$PROJECT_DIR$/eureka-clinet2/pom.xml" />
+        <option value="$PROJECT_DIR$/common/pom.xml" />
       </list>
     </option>
   </component>
