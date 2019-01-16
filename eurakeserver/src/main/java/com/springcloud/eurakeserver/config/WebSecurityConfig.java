@@ -50,7 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf()
                 .disable()
-                .authorizeRequests()
+                .authorizeRequests()   //定义那些url 被保护
                 .anyRequest()
                 .authenticated()
                 .and()
