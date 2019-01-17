@@ -17,7 +17,7 @@ import java.util.List;
  */
 public interface UserRepository extends JpaRepository<User,String> {
 
-    List<User> findByUserName(String userName);
+    User findByUserName(String userName);
 
     @Query(value = "select id,user_name,password,create_time,age from user where age>?1 and  age<?2", nativeQuery = true)
     List<Object> findByAgeRange(int lage, int mage);

@@ -46,6 +46,7 @@ public class AuthenticationController {
      * @param authentication 信息
      * @return 用户信息
      */
+    @ResponseBody
     @RequestMapping("/user")
     public Object user(Authentication authentication) {
         return authentication.getPrincipal();

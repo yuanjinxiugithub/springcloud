@@ -31,7 +31,7 @@ public class UserController {
 
     @GetMapping(value = "findByUserName")
     public ResponseEntity<JsonResult> findByUserName(@RequestParam String userName){
-         List<User> user = userRepository.findByUserName(userName);
+         User user = userRepository.findByUserName(userName);
        return ResponseMessageUtil.success(String.valueOf(HttpStatus.OK.value()),"查询数据成功",user);
     }
 

@@ -22,4 +22,9 @@ public interface SecurityConstants {
      * session失效默认的跳转地址
      */
     String DEFAULT_SESSION_INVALID_URL = "/session/invalid";
+
+    /**
+     * 基础角色
+     */
+    String BASE_ROLE = "ROLE_USER";
 }

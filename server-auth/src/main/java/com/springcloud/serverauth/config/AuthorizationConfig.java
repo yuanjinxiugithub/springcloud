@@ -1,10 +1,19 @@
 package com.springcloud.serverauth.config;
 
+import com.springcloud.serverauth.service.impl.UserDetailServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
+import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+
+import javax.sql.DataSource;
 
 /**
  * @Author: YuanJinXiu
@@ -15,6 +24,17 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 @Configuration
 @EnableAuthorizationServer
 public class AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
+    @Autowired
+    private DataSource dataSource;
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Override
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+        endpoints.authenticationManager(authenticationManager);
+
+    }
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
@@ -22,8 +42,9 @@ public class AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
         clients.inMemory()                  // 使用in-memory存储客户端信息
                 .withClient("client")       // client_id
                 .secret("secret")                   // client_secret
+                .accessTokenValiditySeconds(7200)
                 .authorizedGrantTypes("authorization_code")     // 该client允许的授权类型
-                .scopes("app");                     // 允许的授权范围
+                .scopes("all");                     // 允许的授权范围
     }
 
 
