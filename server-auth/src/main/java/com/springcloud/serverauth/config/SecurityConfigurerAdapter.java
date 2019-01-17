@@ -10,7 +10,7 @@ import org.springframework.security.config.annotation.web.configurers.Expression
 
 /**
  * @Author: YuanJinXiu
- * @Description: ${description}
+ * @Description:  客户端认证
  * @Date: 2019/1/17 10:31
  * @Version: 1.0
  */
