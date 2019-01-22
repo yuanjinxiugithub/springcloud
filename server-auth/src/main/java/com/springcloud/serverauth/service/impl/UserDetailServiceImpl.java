@@ -2,6 +2,7 @@ package com.springcloud.serverauth.service.impl;
 
 import com.springcloud.serverauth.entity.UserVO;
 import com.springcloud.serverauth.repository.UserVoRepository;
+import com.springcloud.serverauth.util.MD5Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,12 +34,19 @@ public class UserDetailServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+        System.out.println(s);
         UserVO userVo = userRepository.findByUserName(s);
-        if (userVo == null) {
-            throw new UsernameNotFoundException("用户名不存在或者密码错误");
+        if (s.equals("")||s.equals(null)) {
+            System.out.println("用户名为空");
+            throw new UsernameNotFoundException("用户名为空");
         }
         logger.info("用户的用户名: {}", s);
-        String password = passwordEncoder.encode(userVo.getPassword());
+        String password = null;
+        try {
+            password = passwordEncoder.encode(MD5Util.decrypt(userVo.getPassword()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         logger.info("password: {}", password);
         // 参数分别是：用户名，密码，用户权限
         User user = new User(s, password, AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_ADMI"));
