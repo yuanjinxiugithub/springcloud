@@ -17,12 +17,18 @@
 
 package com.springcloud.serverauth.controller;
 
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author lengleng
@@ -37,8 +43,16 @@ public class AuthenticationController {
      * @return ModelAndView
      */
     @RequestMapping("/require")
-    public ModelAndView require() {
-        return new ModelAndView("login");
+    public ModelAndView require(Model model) {
+        ModelAndView view = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        model.addAttribute("error",false);
+        if(auth instanceof AnonymousAuthenticationToken){
+           view.setViewName("login");
+        }else{
+            view.setViewName("index");
+        }
+        return view;
     }
 
     /**

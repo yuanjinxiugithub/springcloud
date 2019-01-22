@@ -1,11 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>微服务统一认证</title>
 </head>
 <body>
 <h2>自定义登录页面</h2>
+<!--这是 试图返回的数据-->
+<p th:text=" ${error}">
+</p>
+<p th:text=" ${param.error}">
+</p>
+<div th:if="${param.error}">
+    Invalid username and password.
+</div>
 <form action="/authentication/form" method="post">
     <table>
         <tr>

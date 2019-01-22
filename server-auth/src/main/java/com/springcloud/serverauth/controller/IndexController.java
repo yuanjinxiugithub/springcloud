@@ -19,4 +19,10 @@ public class IndexController {
     public ModelAndView require() {
         return new ModelAndView("index");
     }
+
+
+    @RequestMapping("/session/invalid")
+    public ModelAndView session() {
+        return new ModelAndView("invalid");
+    }
 }

@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * @Author: YuanJinXiu
- * @Description: ${description}
+ * @Description:  实现UserDetailsService  用于处理登陆信息
  * @Date: 2019/1/17 16:00
  * @Version: 1.0
  */
@@ -34,15 +34,12 @@ public class UserDetailServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         UserVO userVo = userRepository.findByUserName(s);
-        System.out.println(userVo);
         if (userVo == null) {
             throw new UsernameNotFoundException("用户名不存在或者密码错误");
         }
         logger.info("用户的用户名: {}", s);
-
         String password = passwordEncoder.encode(userVo.getPassword());
         logger.info("password: {}", password);
-
         // 参数分别是：用户名，密码，用户权限
         User user = new User(s, password, AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_ADMI"));
         return user;

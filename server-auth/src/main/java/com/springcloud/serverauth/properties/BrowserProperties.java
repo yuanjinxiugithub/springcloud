@@ -20,7 +20,7 @@ public class BrowserProperties {
     /**
      * 默认登录方式
      */
-    private LoginResponseType loginType = LoginResponseType.JSON;
+    private LoginResponseType loginType = LoginResponseType.REDIRECT;
 
     /**
      * 默认记住我的时长

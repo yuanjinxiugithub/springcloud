@@ -24,6 +24,8 @@ import javax.sql.DataSource;
 @Configuration
 @EnableAuthorizationServer
 public class AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
+
+
     @Autowired
     private DataSource dataSource;
 
@@ -42,7 +44,6 @@ public class AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
         clients.inMemory()                  // 使用in-memory存储客户端信息
                 .withClient("client")       // client_id
                 .secret("secret")                   // client_secret
-                .accessTokenValiditySeconds(7200)
                 .authorizedGrantTypes("authorization_code")     // 该client允许的授权类型
                 .scopes("all");                     // 允许的授权范围
     }
@@ -51,11 +52,11 @@ public class AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
     @Override
     public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
         oauthServer
-                .tokenKeyAccess("permitAll()")
-                .checkTokenAccess("permitAll()")
+             /*   .tokenKeyAccess("permitAll()")
+                .checkTokenAccess("permitAll()")*/
                 .allowFormAuthenticationForClients();
 
-        //	oauthServer.allowFormAuthenticationForClients();
+          oauthServer.allowFormAuthenticationForClients();
     }
 
 }

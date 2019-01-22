@@ -47,7 +47,7 @@ public class UserDetailsImpl implements UserDetails {
         this.username = userVo.getUserName();
         this.password = userVo.getPassword();
         this.status = userVo.getDelFlag();
-        roleList = userVo.getRoleList();
+     //   roleList = userVo.getRoleList();
     }
 
     @Override

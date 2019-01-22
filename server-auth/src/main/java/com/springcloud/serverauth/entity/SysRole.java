@@ -18,6 +18,7 @@
 package com.springcloud.serverauth.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.springcloud.serverauth.repository.UserVoRepository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,7 +30,9 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * <p>
@@ -73,4 +76,6 @@ public class SysRole implements Serializable {
     @Column(name="del_flag",length = 2)
     private String delFlag;
 
+    /*@ManyToMany(mappedBy="courses")
+    List<UserVO> users = new ArrayList<UserVO>();*/
 }

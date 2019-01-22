@@ -111,6 +111,12 @@ public class UserVO implements Serializable {
     /**
      * 角色列表
      */
-    @Transient
-    private List<SysRole> roleList;
+
+   /* @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
+    @JoinColumn(name="detailId",referencedColumnName = "id")*/
+   /* @ManyToMany(cascade = CascadeType.REMOVE,fetch = FetchType.LAZY)
+    @JoinTable(name = "sys_user_role",joinColumns = @JoinColumn(name="user_id"),inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private List<SysRole> roleList;*/
+
+
 }

@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -30,6 +31,7 @@ public class UserController {
     private final UserRepository userRepository;
 
     @GetMapping(value = "findByUserName")
+    @PreAuthorize("hasPermission('user', 'read') or hasRole('ROLE_ADMINISTRATOR')")
     public ResponseEntity<JsonResult> findByUserName(@RequestParam String userName){
          User user = userRepository.findByUserName(userName);
        return ResponseMessageUtil.success(String.valueOf(HttpStatus.OK.value()),"查询数据成功",user);
