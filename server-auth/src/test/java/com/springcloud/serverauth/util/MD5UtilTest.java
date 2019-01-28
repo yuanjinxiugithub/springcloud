@@ -17,6 +17,7 @@ public class MD5UtilTest {
 
     @Before
     public void setUp() throws Exception {
+
     }
 
     @After

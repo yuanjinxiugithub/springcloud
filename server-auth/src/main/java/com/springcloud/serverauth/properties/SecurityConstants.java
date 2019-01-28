@@ -1,8 +1,8 @@
 package com.springcloud.serverauth.properties;
 
 /**
- * @Author: HanLong
- * @Date: Create in 2018/3/18 15:22
+ * @Author: yjx
+ * @Date:
  * @Description:
  */
 public interface SecurityConstants {

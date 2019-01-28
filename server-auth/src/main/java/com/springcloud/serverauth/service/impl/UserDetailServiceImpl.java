@@ -36,10 +36,10 @@ public class UserDetailServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         System.out.println(s);
         UserVO userVo = userRepository.findByUserName(s);
-        if (s.equals("")||s.equals(null)) {
+       /* if (s.equals("")||s.equals(null)) {
             System.out.println("用户名为空");
             throw new UsernameNotFoundException("用户名为空");
-        }
+        }*/
         logger.info("用户的用户名: {}", s);
         String password = null;
         try {
