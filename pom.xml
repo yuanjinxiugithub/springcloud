@@ -5,6 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
     <modules>
         <module>eurakeserver</module>
+        <module>eureka-client1</module>
+        <module>eureka-client2</module>
+        <module>server-auth</module>
     </modules>
 
     <groupId>com.springcloud</groupId>
